@@ -376,6 +376,44 @@
     .process-row::before{display:none;}
   }
 
+  /* ---------- TEAM ---------- */
+  #team{background:var(--paper-raised);border-top:1px solid var(--wire-faint);border-bottom:1px solid var(--wire-faint);}
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+  .team-card{
+    border:1px solid var(--wire-faint);
+    border-radius:14px;
+    padding:30px;
+    background:var(--paper);
+    transition:border-color .2s;
+  }
+  .team-card:hover{border-color:var(--wire);}
+  .team-card .avatar{
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--teal-soft);
+    color:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    margin-bottom:18px;
+  }
+  .team-card h3{font-size:1.1rem;margin-bottom:2px;}
+  .team-card .role{
+    font-size:0.78rem;
+    color:var(--signal);
+    text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace;
+    display:block;
+    margin-bottom:14px;
+  }
+  .team-card p{font-size:0.92rem;color:var(--ink-soft);}
+  @media (max-width:760px){.team-grid{grid-template-columns:1fr;}}
+
   /* ---------- WHY / BENEFITS ---------- */
   .benefit-grid{
     display:grid;
@@ -481,6 +519,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#team">Team</a>
       <a href="#process">Process</a>
       <a href="#benefits">Benefits</a>
       <a href="#contact">Contact</a>
@@ -572,6 +611,30 @@
         <span class="tag-mono mono">AUTO</span>
         <h3>Project Automation</h3>
         <p>Tools that handle repetitive project setup and management for teams and students alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag mono">Who's building it</span>
+      <h2>The two people behind THEOS X THECH.</h2>
+      <p>No account managers, no hand-offs — you work directly with the founders on every project.</p>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="avatar">GA</div>
+        <h3>Godwin Ayuba</h3>
+        <span class="role">Co-Founder &amp; CEO</span>
+        <p>Leads product development, technology strategy, AI solutions, business growth, and client projects.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">IS</div>
+        <h3>Ishaku Ibrahim Sule</h3>
+        <span class="role">Co-Founder &amp; COO</span>
+        <p>Oversees company operations, customer relations, team coordination, sales, and project delivery.</p>
       </div>
     </div>
   </div>
