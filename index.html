@@ -541,6 +541,15 @@
     margin-top:6px;
   }
   .btn-submit:hover{background:#cf4e09;}
+  .form-success{
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.06);
+    border-radius:8px;
+    padding:26px 24px;
+    text-align:left;
+  }
+  .form-success strong{display:block;font-size:1.1rem;color:#fff;margin-bottom:6px;}
+  .form-success p{font-size:0.9rem;color:#A9B6C2;margin:0;}
   @media (max-width:760px){.contact-grid{grid-template-columns:1fr;}.field-row{grid-template-columns:1fr;}}
 
   /* ---------- FOOTER ---------- */
@@ -782,18 +791,19 @@
       <span class="section-head tag mono" style="display:block;">Get in touch</span>
       <h2 style="margin-bottom:16px;">Tell us what you're trying to build.</h2>
       <p>Send a few details below and we'll reply with next steps — usually within a day.</p>
-      <div class="info-row"><span class="lbl">Email</span><span>hello@theosxtech.dev</span></div>
+      <div class="info-row"><span class="lbl">Email</span><span>ayuskid15@gmail.com</span></div>
       <div class="info-row"><span class="lbl">Based in</span><span>Remote-first, working worldwide</span></div>
       <div class="info-row"><span class="lbl">Response</span><span>Within 1 business day</span></div>
       <div class="info-row"><span class="lbl">Registered</span><span>Business Name (CAC) · BN 9734512</span></div>
     </div>
-    <form class="reveal" onsubmit="event.preventDefault(); this.querySelector('.btn-submit').textContent='Sent ✓';">
+    <form id="contactForm" class="reveal">
       <div class="field-row">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Your email" required>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
       </div>
-      <input type="text" placeholder="Company (optional)">
-      <textarea placeholder="What are you trying to build?" required></textarea>
+      <input type="text" name="company" placeholder="Company (optional)">
+      <textarea name="message" placeholder="What are you trying to build?" required></textarea>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <button class="btn-submit" type="submit">Send message</button>
     </form>
   </div>
@@ -811,6 +821,48 @@
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Contact form → /api/contact (Vercel function → ayuskid15@gmail.com), with mailto fallback
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const els = contactForm.elements;
+    const name = els['name'].value.trim();
+    const email = els['email'].value.trim();
+    const company = els['company'].value.trim();
+    const message = els['message'].value.trim();
+    const btn = contactForm.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, email, company, message,
+          _honey: els['_honey'].value,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || 'send failed');
+      contactForm.innerHTML =
+        '<div class="form-success">' +
+          '<strong>Thank you — message sent.</strong>' +
+          '<p>We read every enquiry and will get back to you within one business day.</p>' +
+        '</div>';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      const subject = encodeURIComponent('New enquiry — theosxtech.dev website');
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Company: ' + (company || '—') + '\n\n' +
+        message
+      );
+      window.location.href = 'mailto:ayuskid15@gmail.com?subject=' + subject + '&body=' + body;
+    }
+  });
 
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {

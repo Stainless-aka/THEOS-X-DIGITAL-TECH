@@ -134,6 +134,17 @@ git push origin feature/your-feature
 
 ---
 
+## 📬 Contact Form (deployment note)
+
+The contact form on the website posts to the serverless function in `api/contact.js`,
+which delivers enquiries to **ayuskid15@gmail.com** via Resend.
+
+Before the form works in production, set the `RESEND_API_KEY` environment variable in
+Vercel (Project → Settings → Environment Variables), then redeploy. Until it is set,
+visitors automatically fall back to a pre-filled `mailto:` link.
+
+---
+
 ## 💡 Our Motto
 
 > Building the future, one solution at a time.
