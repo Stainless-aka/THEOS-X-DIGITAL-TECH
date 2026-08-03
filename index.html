@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THEOS X DIGITAL TECH — Build, Automate, Scale</title>
+<title>THEOS X TECH — Build, Automate, Scale</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Sans:wght@400..700&family=Martian+Mono:wght@400..800&display=swap" rel="stylesheet">
@@ -75,16 +76,16 @@
   .logo{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:11px;
     font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:700;
-    font-size:1.05rem;
+    font-size:1.02rem;
+    color:var(--ink);
   }
-  .logo .dot{
-    width:9px;height:9px;border-radius:50%;
-    background:var(--signal);
-    box-shadow:0 0 0 3px var(--signal-soft);
-  }
+  .logo .logo-mark{width:30px;height:30px;display:block;flex-shrink:0;}
+  .logo-text{letter-spacing:0.05em;}
+  .logo-text .logo-word{font-weight:800;}
+  .logo-text .logo-x{color:var(--signal);font-weight:800;}
+  .logo-text .logo-lite{font-weight:500;color:var(--ink-soft);}
   .nav-links{
     display:flex;
     gap:32px;
@@ -495,6 +496,8 @@
   }
   footer a{color:#A9B6C2;}
   footer a:hover{color:#fff;}
+  .footer-brand{display:inline-flex;align-items:center;gap:9px;}
+  .footer-mark{width:18px;height:18px;display:block;}
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s, transform .5s;}
@@ -510,7 +513,10 @@
 
 <header>
   <nav>
-    <div class="logo"><span class="dot"></span>THEOS X DIGITAL TECH</div>
+    <a href="#home" class="logo" aria-label="THEOS X TECH — home">
+      <img src="logo.svg" alt="" class="logo-mark" width="30" height="30">
+      <span class="logo-text"><span class="logo-word">THEOS</span> <span class="logo-x">X</span> <span class="logo-lite">TECH</span></span>
+    </a>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -718,7 +724,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 THEOS X TECH. All rights reserved.</span>
+    <span class="footer-brand"><img src="logo.svg" alt="" class="footer-mark">© 2026 THEOS X TECH. All rights reserved.</span>
     <span><a href="#home">Back to top ↑</a></span>
   </div>
 </footer>
