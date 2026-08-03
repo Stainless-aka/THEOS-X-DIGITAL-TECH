@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THEOS X THECH — Build, Automate, Scale</title>
+<title>THEOS X DIGITAL TECH — Build, Automate, Scale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Sans:wght@400..700&family=Martian+Mono:wght@400..800&display=swap" rel="stylesheet">
 <style>
 
   :root{
@@ -31,19 +31,19 @@
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:'Inter',sans-serif;
+    font-family:'Instrument Sans',sans-serif;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
 
   h1,h2,h3{
-    font-family:'Space Grotesk',sans-serif;
+    font-family:'Bricolage Grotesque',sans-serif;
     line-height:1.12;
     letter-spacing:-0.01em;
   }
 
   .mono{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Martian Mono',monospace;
     letter-spacing:0.02em;
   }
 
@@ -54,15 +54,6 @@
   }
 
   a{color:inherit;text-decoration:none;}
-
-  /* ---------- background grid texture ---------- */
-  .grid-bg{
-    background-image:
-      linear-gradient(var(--wire-faint) 1px, transparent 1px),
-      linear-gradient(90deg, var(--wire-faint) 1px, transparent 1px);
-    background-size:48px 48px;
-    background-position:-1px -1px;
-  }
 
   /* ---------- NAV ---------- */
   header{
@@ -85,7 +76,7 @@
     display:flex;
     align-items:center;
     gap:8px;
-    font-family:'Space Grotesk',sans-serif;
+    font-family:'Bricolage Grotesque',sans-serif;
     font-weight:700;
     font-size:1.05rem;
   }
@@ -138,26 +129,15 @@
   .hero{
     padding:88px 0 60px;
     position:relative;
+    background:
+      radial-gradient(720px 360px at 88% 0%, var(--signal-soft), transparent 65%),
+      radial-gradient(640px 320px at 4% 100%, var(--teal-soft), transparent 60%);
   }
   .hero .wrap{
     display:grid;
     grid-template-columns:1.1fr 1fr;
     gap:56px;
     align-items:center;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:0.78rem;
-    color:var(--wire);
-    margin-bottom:18px;
-    text-transform:uppercase;
-  }
-  .eyebrow::before{
-    content:'';
-    width:18px;height:1px;
-    background:var(--wire);
   }
   h1{
     font-size:clamp(2.2rem, 4.4vw, 3.4rem);
@@ -193,65 +173,56 @@
   }
   .btn-secondary:hover{border-color:var(--wire);}
 
-  /* schematic diagram */
-  .schematic{
+  /* hero visual */
+  .hero-visual{position:relative;}
+  .hero-figure{
     position:relative;
+    margin:0;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -28px rgba(16,21,28,0.4);
     background:var(--paper-raised);
-    border:1px solid var(--wire-faint);
-    border-radius:14px;
-    padding:30px 22px;
   }
-  .schematic .cap{
-    font-size:0.72rem;
-    color:var(--wire);
-    margin-bottom:22px;
+  .hero-figure img{
     display:block;
+    width:100%;
+    height:100%;
+    min-height:440px;
+    object-fit:cover;
   }
-  .pipeline{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-  }
-  .pnode{
-    display:flex;
-    align-items:flex-start;
-    gap:14px;
-    position:relative;
-    padding-bottom:28px;
-  }
-  .pnode:last-child{padding-bottom:0;}
-  .pnode::before{
+  .hero-figure::after{
     content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(200deg, rgba(16,21,28,0) 45%, rgba(16,21,28,0.55) 100%);
+  }
+  .hero-card{
     position:absolute;
-    left:11px;
-    top:26px;
-    bottom:-2px;
-    width:1px;
-    background:repeating-linear-gradient(to bottom, var(--wire) 0 4px, transparent 4px 8px);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--paper-raised);
+    border-radius:12px;
+    padding:13px 18px;
+    box-shadow:0 18px 44px -14px rgba(16,21,28,0.35);
   }
-  .pnode:last-child::before{display:none;}
-  .pdot{
-    width:23px;height:23px;
+  .hero-card .ic{
+    width:34px;height:34px;
     border-radius:50%;
-    background:var(--paper);
-    border:2px solid var(--wire);
-    display:flex;align-items:center;justify-content:center;
-    font-size:0.65rem;
-    font-weight:700;
-    color:var(--wire);
-    flex-shrink:0;
-    z-index:1;
-  }
-  .pnode.is-output .pdot{
-    border-color:var(--signal);
-    color:var(--signal);
     background:var(--signal-soft);
+    color:var(--signal);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    flex-shrink:0;
   }
-  .ptext strong{display:block;font-size:0.95rem;margin-bottom:2px;}
-  .ptext span{font-size:0.82rem;color:var(--ink-soft);}
+  .hero-card strong{display:block;font-size:0.92rem;line-height:1.25;}
+  .hero-card span{font-size:0.76rem;color:var(--ink-soft);}
+  .hero-card-a{top:20px;left:-16px;}
+  .hero-card-b{bottom:20px;right:-14px;}
 
   @media (max-width:860px){
     .hero .wrap{grid-template-columns:1fr;}
+    .hero-card-a{left:14px;}
+    .hero-card-b{right:14px;}
   }
 
   /* ---------- SECTION SHARED ---------- */
@@ -288,6 +259,30 @@
     gap:50px;
   }
   .about-grid p{color:var(--ink-soft);margin-bottom:16px;}
+  .figure-col{display:flex;}
+  .about-figure{
+    position:relative;
+    flex:1;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -30px rgba(16,21,28,0.4);
+    background:var(--paper-raised);
+  }
+  .about-figure img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .about-figure-tag{
+    position:absolute;
+    bottom:16px;left:16px;
+    background:rgba(16,21,28,0.72);
+    color:var(--paper);
+    padding:7px 13px;
+    border-radius:999px;
+    font-size:0.68rem;
+    backdrop-filter:blur(6px);
+  }
   .cap-list{list-style:none;margin-top:8px;}
   .cap-list li{
     display:flex;
@@ -298,7 +293,7 @@
   }
   .cap-list li:first-child{border-top:1px solid var(--wire-faint);}
   .cap-list .num{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Martian Mono',monospace;
     color:var(--signal);
     font-size:0.85rem;
     flex-shrink:0;
@@ -363,7 +358,7 @@
     background:var(--paper);
     border:2px solid var(--wire);
     display:flex;align-items:center;justify-content:center;
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Martian Mono',monospace;
     font-size:0.72rem;
     color:var(--wire);
     margin-bottom:16px;
@@ -397,7 +392,7 @@
     background:var(--teal-soft);
     color:var(--teal);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk',sans-serif;
+    font-family:'Bricolage Grotesque',sans-serif;
     font-weight:700;
     font-size:1.05rem;
     margin-bottom:18px;
@@ -407,7 +402,7 @@
     font-size:0.78rem;
     color:var(--signal);
     text-transform:uppercase;
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Martian Mono',monospace;
     display:block;
     margin-bottom:14px;
   }
@@ -454,7 +449,7 @@
     border-top:1px solid rgba(255,255,255,0.12);
     font-size:0.9rem;
   }
-  .info-row span.lbl{color:#7FA3BD;width:90px;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;}
+  .info-row span.lbl{color:#7FA3BD;width:90px;flex-shrink:0;font-family:'Martian Mono',monospace;font-size:0.78rem;}
   form{display:flex;flex-direction:column;gap:14px;}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   input,textarea{
@@ -463,7 +458,7 @@
     border-radius:8px;
     padding:13px 14px;
     color:#fff;
-    font-family:'Inter',sans-serif;
+    font-family:'Instrument Sans',sans-serif;
     font-size:0.92rem;
   }
   input::placeholder,textarea::placeholder{color:#8694A1;}
@@ -515,7 +510,7 @@
 
 <header>
   <nav>
-    <div class="logo"><span class="dot"></span>THEOS<span class="mono" style="color:var(--ink-soft);font-weight:500;">×</span>THECH</div>
+    <div class="logo"><span class="dot"></span>THEOS X DIGITAL TECH</div>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -529,37 +524,29 @@
   </nav>
 </header>
 
-<section class="hero grid-bg" id="home">
+<section class="hero" id="home">
   <div class="wrap">
     <div>
-      <span class="eyebrow mono">Web · Mobile · AI · Automation</span>
       <h1>We turn one idea into a working <span class="accent">system</span>, not just a site.</h1>
-      <p class="lead">THEOS X THECH designs and builds the software layer of your business — the website people see, the app they use, and the automation running quietly behind both.</p>
+      <p class="lead">THEOS X DIGITAL TECH designs and builds the software layer of your business — the website people see, the app they use, and the automation running quietly behind both.</p>
       <div class="cta-row">
         <a href="#contact" class="btn-primary">Start a project</a>
         <a href="#process" class="btn-secondary">See how we work</a>
       </div>
     </div>
 
-    <div class="schematic reveal">
-      <span class="cap mono">// what happens when you work with us</span>
-      <div class="pipeline">
-        <div class="pnode">
-          <div class="pdot">1</div>
-          <div class="ptext"><strong>You describe the problem</strong><span>A goal, not a spec — we translate from there.</span></div>
-        </div>
-        <div class="pnode">
-          <div class="pdot">2</div>
-          <div class="ptext"><strong>We design the system</strong><span>Web, app, and data pieces mapped together.</span></div>
-        </div>
-        <div class="pnode">
-          <div class="pdot">3</div>
-          <div class="ptext"><strong>We build & connect it</strong><span>Front end, back end, and the automation between.</span></div>
-        </div>
-        <div class="pnode is-output">
-          <div class="pdot">✓</div>
-          <div class="ptext"><strong>You get something that runs itself</strong><span>Less manual work for you, day one onward.</span></div>
-        </div>
+    <!-- Replace these stock placeholders with your own ChatGPT-generated images -->
+    <div class="hero-visual reveal">
+      <figure class="hero-figure">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop" alt="Developer's workspace with code on screen" loading="eager">
+      </figure>
+      <div class="hero-card hero-card-a">
+        <span class="ic">✓</span>
+        <div><strong>Direct support</strong><span>You talk straight to the founders</span></div>
+      </div>
+      <div class="hero-card hero-card-b">
+        <span class="ic">→</span>
+        <div><strong>Built to extend</strong><span>Today's project grows, not restarts</span></div>
       </div>
     </div>
   </div>
@@ -572,14 +559,18 @@
       <h2 style="margin-bottom:18px;">A small studio that thinks in systems, not single pages.</h2>
       <p>Most agencies hand you a website and walk away. We start from the assumption that your site, app, and internal tools should talk to each other so the work we ship for you is connected by design, not patched together afterward.</p>
       <p>Whether you're a founder shipping a first product or a student automating a recurring project, the approach is the same: understand what's repetitive or disconnected, then build the smallest system that fixes it.</p>
-    </div>
-    <div class="reveal">
       <ul class="cap-list mono">
         <li><span class="num">01</span> Websites built to be edited, not feared</li>
         <li><span class="num">02</span> Native-feeling apps for Android & iOS</li>
         <li><span class="num">03</span> AI features that solve one job well</li>
         <li><span class="num">04</span> Automation that replaces the busywork</li>
       </ul>
+    </div>
+    <div class="figure-col reveal">
+      <figure class="about-figure">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="The team collaborating around a shared workspace" loading="lazy">
+        <span class="about-figure-tag mono">Remote-first · Working worldwide</span>
+      </figure>
     </div>
   </div>
 </section>
@@ -620,18 +611,18 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="tag mono">Who's building it</span>
-      <h2>The two people behind THEOS X THECH.</h2>
+      <h2>The two people behind THEOS X TECH.</h2>
       <p>No account managers, no hand-offs, you work directly with the founders on every project.</p>
     </div>
     <div class="team-grid reveal">
       <div class="team-card">
-        <div class="avatar">GA</div>
+        <div class="avatar">GIA</div>
         <h3>Godwin Inalegwu Ayuba</h3>
         <span class="role">Co-Founder &amp; CEO</span>
         <p>Leads product development, technology strategy, AI solutions, business growth, and client projects.</p>
       </div>
       <div class="team-card">
-        <div class="avatar">IS</div>
+        <div class="avatar">IIS</div>
         <h3>Ishaku Ibrahim Sule</h3>
         <span class="role">Co-Founder &amp; CFO</span>
         <p>Oversees company operations, customer relations, team coordination, sales, and project delivery.</p>
@@ -679,7 +670,7 @@
 <section id="benefits">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="tag mono">Why THEOS X THECH</span>
+      <span class="tag mono">Why THEOS X DIGITAL TECH</span>
       <h2>Built to be maintained, not just delivered.</h2>
     </div>
     <div class="benefit-grid reveal">
@@ -727,7 +718,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 THEOS X THECH. All rights reserved.</span>
+    <span>© 2026 THEOS X TECH. All rights reserved.</span>
     <span><a href="#home">Back to top ↑</a></span>
   </div>
 </footer>
