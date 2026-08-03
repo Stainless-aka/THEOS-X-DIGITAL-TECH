@@ -1,10 +1,10 @@
-# 🚀 Theos X Tech
+# 🚀 THEOS X DIGITAL TECH
 
 > Building innovative digital solutions that solve real-world problems.
 
 ## 🌍 About Us
 
-**Theos X Tech** is a technology-driven brand focused on building modern, scalable, and AI-powered solutions that empower students, businesses, and communities.
+**THEOS X DIGITAL TECH** is a registered Business Name in Nigeria (CAC Registration No. BN 9734512), focused on building modern, scalable, and AI-powered solutions that empower students, businesses, and communities.
 
 Our mission is to create software products that are simple, accessible, and impactful while leveraging modern technologies and artificial intelligence.
 
