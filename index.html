@@ -541,6 +541,17 @@
     margin-top:6px;
   }
   .btn-submit:hover{background:#cf4e09;}
+  .form-error{
+    border:1px solid rgba(232,89,12,0.45);
+    background:rgba(232,89,12,0.08);
+    border-radius:8px;
+    padding:14px 16px;
+    font-size:0.85rem;
+    color:#A9B6C2;
+    text-align:left;
+  }
+  .form-error strong{display:block;color:#fff;margin-bottom:4px;}
+  .form-error a{color:var(--signal);text-decoration:underline;}
   .form-success{
     border:1px solid rgba(255,255,255,0.18);
     background:rgba(255,255,255,0.06);
@@ -860,7 +871,14 @@
         'Company: ' + (company || '—') + '\n\n' +
         message
       );
-      window.location.href = 'mailto:ayuskid15@gmail.com?subject=' + subject + '&body=' + body;
+      const mailto = 'mailto:ayuskid15@gmail.com?subject=' + subject + '&body=' + body;
+      const notice = document.createElement('div');
+      notice.className = 'form-error';
+      notice.innerHTML =
+        '<strong>Could not send automatically.</strong>' +
+        ' Please email us directly — <a href="' + mailto + '">ayuskid15@gmail.com</a> ' +
+        '(your details are already filled in).';
+      contactForm.appendChild(notice);
     }
   });
 
