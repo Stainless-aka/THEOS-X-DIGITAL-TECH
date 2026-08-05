@@ -343,35 +343,58 @@
   }
   @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
 
-  /* ---------- SERVICES ---------- */
-  .service-grid{
+  /* ---------- SERVICES / PORTFOLIO ---------- */
+  .portfolio-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--wire-faint);
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .portfolio-card{
+    background:var(--paper-raised);
     border:1px solid var(--wire-faint);
     border-radius:14px;
-    overflow:hidden;
+    padding:26px 24px;
+    transition:border-color .2s;
   }
-  .service-card{
-    background:var(--paper-raised);
-    padding:30px 24px;
-    transition:background .2s;
-  }
-  .service-card:hover{background:var(--teal-soft);}
-  .service-card .tag-mono{
-    font-size:0.7rem;
+  .portfolio-card:hover{border-color:var(--wire);}
+  .portfolio-card .tag-mono{
+    font-size:0.68rem;
     color:var(--teal);
     background:var(--teal-soft);
     display:inline-block;
     padding:3px 9px;
     border-radius:5px;
-    margin-bottom:16px;
+    margin-bottom:14px;
   }
-  .service-card h3{font-size:1.08rem;margin-bottom:10px;}
-  .service-card p{font-size:0.88rem;color:var(--ink-soft);}
-  @media (max-width:920px){.service-grid{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:560px){.service-grid{grid-template-columns:1fr;}}
+  .portfolio-card h3{font-size:1.05rem;margin-bottom:12px;}
+  .portfolio-list{list-style:none;}
+  .portfolio-list li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    padding:7px 0;
+    border-bottom:1px solid var(--wire-faint);
+  }
+  .portfolio-list li:last-child{border-bottom:none;}
+  .portfolio-list li::before{
+    content:'';
+    width:6px;height:6px;
+    background:var(--teal);
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .customer-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .customer-chip{
+    font-size:0.76rem;
+    color:var(--teal);
+    background:var(--teal-soft);
+    border-radius:999px;
+    padding:6px 12px;
+  }
+  @media (max-width:920px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
 
   /* ---------- PROCESS ---------- */
   #process{background:var(--paper-raised);border-top:1px solid var(--wire-faint);border-bottom:1px solid var(--wire-faint);}
@@ -416,11 +439,14 @@
   /* ---------- TEAM ---------- */
   #team{background:var(--paper-raised);border-top:1px solid var(--wire-faint);border-bottom:1px solid var(--wire-faint);}
   .team-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:28px;
   }
   .team-card{
+    flex:1 1 300px;
+    max-width:380px;
     border:1px solid var(--wire-faint);
     border-radius:14px;
     padding:30px;
@@ -472,7 +498,8 @@
     transition:color .2s;
   }
   .team-card:hover .view-profile{color:var(--signal);}
-  @media (max-width:920px){.team-grid{grid-template-columns:1fr;}}
+  @media (max-width:1100px){.team-grid{justify-content:center;}}
+  @media (max-width:560px){.team-card{flex-basis:100%;max-width:none;}}
 
   /* ---------- TEAM MODAL ---------- */
   .modal{
@@ -788,30 +815,73 @@
 <section id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="tag mono">What we build</span>
-      <h2>Four pieces. One connected stack.</h2>
-      <p>Pick one service or all four, each is built to plug into the others later, even if you only need one today.</p>
+      <span class="tag mono">Service Portfolio</span>
+      <h2>Five practice areas. One connected stack.</h2>
+      <p>Every engagement is built to plug into the others — start with one area or combine them as you grow.</p>
     </div>
-    <div class="service-grid reveal">
-      <div class="service-card">
-        <span class="tag-mono mono">WEB</span>
-        <h3>Web Development</h3>
-        <p>Fast, responsive sites built around your content brand and not a generic template.</p>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-card">
+        <span class="tag-mono mono">SOFTWARE</span>
+        <h3>Software Development</h3>
+        <ul class="portfolio-list">
+          <li>Web Applications</li>
+          <li>Business Systems</li>
+          <li>Enterprise Solutions</li>
+          <li>SaaS Products</li>
+        </ul>
       </div>
-      <div class="service-card">
-        <span class="tag-mono mono">APP</span>
-        <h3>Mobile Applications</h3>
-        <p>Android and iOS apps with interfaces people actually enjoy using.</p>
-      </div>
-      <div class="service-card">
+      <div class="portfolio-card">
         <span class="tag-mono mono">AI</span>
-        <h3>AI Solutions</h3>
-        <p>Targeted automation and data tools that save real hours, not demo-only gimmicks.</p>
+        <h3>Artificial Intelligence</h3>
+        <ul class="portfolio-list">
+          <li>AI Integrations</li>
+          <li>Automation</li>
+          <li>Intelligent Assistants</li>
+          <li>Machine Learning Solutions</li>
+        </ul>
       </div>
-      <div class="service-card">
-        <span class="tag-mono mono">AUTO</span>
-        <h3>Project Automation</h3>
-        <p>Tools that handle repetitive project setup and management for teams and students alike.</p>
+      <div class="portfolio-card">
+        <span class="tag-mono mono">DIGITAL</span>
+        <h3>Digital Transformation</h3>
+        <ul class="portfolio-list">
+          <li>Business Process Automation</li>
+          <li>Cloud Solutions</li>
+          <li>Digital Strategy</li>
+          <li>Technology Consulting</li>
+        </ul>
+      </div>
+      <div class="portfolio-card">
+        <span class="tag-mono mono">DESIGN</span>
+        <h3>Design</h3>
+        <ul class="portfolio-list">
+          <li>UI/UX Design</li>
+          <li>Brand Identity</li>
+          <li>Product Design</li>
+        </ul>
+      </div>
+      <div class="portfolio-card">
+        <span class="tag-mono mono">SUPPORT</span>
+        <h3>Support</h3>
+        <ul class="portfolio-list">
+          <li>Maintenance</li>
+          <li>Security</li>
+          <li>Training</li>
+          <li>Technical Support</li>
+        </ul>
+      </div>
+      <div class="portfolio-card">
+        <span class="tag-mono mono">TARGETS</span>
+        <h3>Target Customers</h3>
+        <div class="customer-chips">
+          <span class="customer-chip">Startups</span>
+          <span class="customer-chip">SMEs</span>
+          <span class="customer-chip">Enterprises</span>
+          <span class="customer-chip">Government Agencies</span>
+          <span class="customer-chip">Educational Institutions</span>
+          <span class="customer-chip">Healthcare Organizations</span>
+          <span class="customer-chip">NGOs</span>
+          <span class="customer-chip">Individual Professionals</span>
+        </div>
       </div>
     </div>
   </div>
@@ -844,6 +914,20 @@
         <h3>Ibrahim Mohammed</h3>
         <span class="role">Content Creator</span>
         <p>AI-powered content creator and digital storyteller shaping the brand across platforms.</p>
+        <span class="view-profile mono">View profile →</span>
+      </div>
+      <div class="team-card" role="button" tabindex="0" aria-label="View profile: Kamaludeen Abubakar">
+        <img src="team/kamaludeen-abubakar.jpg" alt="Kamaludeen Abubakar" class="avatar" width="112" height="112">
+        <h3>Kamaludeen Abubakar</h3>
+        <span class="role">Graphic Designer</span>
+        <p>Designs compelling brand identities and digital assets that leave lasting impressions.</p>
+        <span class="view-profile mono">View profile →</span>
+      </div>
+      <div class="team-card" role="button" tabindex="0" aria-label="View profile: Lionel Aember Nyam">
+        <img src="team/lionel-aember-nyam.jpg" alt="Lionel Aember Nyam" class="avatar" width="112" height="112">
+        <h3>Lionel Aember Nyam</h3>
+        <span class="role">Technology Consultant</span>
+        <p>Strategic technology and IT consulting that helps organizations solve complex challenges.</p>
         <span class="view-profile mono">View profile →</span>
       </div>
     </div>
@@ -1027,9 +1111,7 @@
       img: 'team/godwin-ayuba.jpg',
       bio: 'Meet <strong>Godwin Inalegwu Ayuba</strong>, Chief Executive Officer and Co-Founder of <strong>THEOS X Digital Tech</strong>. A software engineer and technology entrepreneur, he leads the company\'s vision, product strategy, and engineering initiatives. Passionate about building scalable web and mobile applications, he is dedicated to creating innovative digital solutions that deliver real-world impact.',
       socials: {
-        facebook: 'https://facebook.com/theosxdigital',
-        twitter: 'https://x.com/theosxdigital',
-        instagram: 'https://instagram.com/theosxdigital',
+        facebook: 'https://www.facebook.com/profile.php?id=61574494423907',
         github: 'https://github.com/Stainless-aka',
         linkedin: 'https://ng.linkedin.com/in/godwin-inalegwu-ayuba-09b3153a7',
       },
@@ -1052,6 +1134,28 @@
       role: 'Content Creator',
       img: 'team/ibrahim-mohammed.jpg',
       bio: 'Meet <strong>Ibrahim Mohammed</strong>, the Content Creator at <strong>THEOS X Digital Tech</strong>. Specializing in AI-powered content creation, Canva design, and digital storytelling, he develops engaging content that strengthens the company\'s brand presence and effectively communicates its vision across digital platforms.',
+      socials: {
+        facebook: 'https://facebook.com/theosxdigital',
+        twitter: 'https://x.com/theosxdigital',
+        instagram: 'https://instagram.com/theosxdigital',
+      },
+    },
+    {
+      name: 'Kamaludeen Abubakar',
+      role: 'Graphic Designer',
+      img: 'team/kamaludeen-abubakar.jpg',
+      bio: 'Meet <strong>Kamaludeen Abubakar</strong>, the Graphic Designer at <strong>THEOS X Digital Tech</strong>. With a passion for creativity and visual storytelling, Kamaludeen designs compelling brand identities and digital assets that leave lasting impressions. From logos and marketing materials to social media creatives and user interface graphics, he transforms ideas into impactful visuals that strengthen the company\'s brand and engage its audience.',
+      socials: {
+        facebook: 'https://facebook.com/theosxdigital',
+        twitter: 'https://x.com/theosxdigital',
+        instagram: 'https://www.instagram.com/great_kamal?igsh=bm45dm5pdnl5NGNi',
+      },
+    },
+    {
+      name: 'Lionel Aember Nyam',
+      role: 'Technology Consultant',
+      img: 'team/lionel-aember-nyam.jpg',
+      bio: 'Meet <strong>Lionel Aember Nyam</strong>, the Technology Consultant at <strong>THEOS X Digital Tech</strong>. Lionel works closely with clients to understand their business goals and recommend innovative technology solutions that drive growth and efficiency. With a strategic approach to digital transformation and IT consulting, he helps organizations leverage technology to solve complex challenges and unlock new opportunities.',
       socials: {
         facebook: 'https://facebook.com/theosxdigital',
         twitter: 'https://x.com/theosxdigital',
